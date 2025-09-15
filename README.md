@@ -1,6 +1,6 @@
 ## Для самоподготовки сделал клон страницы с тестами с [сайта](https://prombez24.com/tests/210/)
 
-[Открыть вопросы](https://osmaav.github.io/el_bez_iv_before_1000v/) 
+## [Открыть вопросы](https://osmaav.github.io/el_bez_iv_before_1000v/) 
 
 ## правильные ответы при выборе окрашиваются в зеленый цвет:
 
@@ -14,8 +14,8 @@
 https://osmaav.github.io/el_bez_iv_before_1000v/?sva&hfa&sntd
 
 ## где:
-- sva - Show Valid Answer - показать правильные ответы;<br/>
-- sntd - Show НТД - показать ссылку на норму;<br/>
-- hfa - Hide Fail Answer - скрыть неверные ответы.<br/>
+- sva - (Show Valid Answer) - показать правильные ответы;<br/>
+- sntd - (Show НТД) - показать ссылку на норму;<br/>
+- hfa - (Hide Fail Answer) - скрыть неверные ответы.<br/>
 
 ## Ключи можно задавать в любых сочетаниях и в любом порядке после знака "?" с разделением знаком "&"
