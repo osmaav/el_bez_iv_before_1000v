@@ -10,12 +10,12 @@
 
 <img width="1528" height="274" alt="image" src="https://github.com/user-attachments/assets/1f34360a-c2c0-49ea-bfbb-a6c4da68eba8" />
 
-добавил обработку ключей в URL
+##добавил обработку ключей в URL
 https://osmaav.github.io/el_bez_iv_before_1000v/?sva&hfa&sntd
 
-где:
-sva - Show Valid Answer - показать правильные ответы;
-sntd - Show НТД - показать ссылку на норму; 
-hfa - Hide Fail Answer - скрыть неверные ответы. 
+#где:
+1. sva - Show Valid Answer - показать правильные ответы;
+2. sntd - Show НТД - показать ссылку на норму; 
+3. hfa - Hide Fail Answer - скрыть неверные ответы. 
 
-Ключи можно задавать в любых сочетаниях и в любом порядке после знака "?" с разделением знаком "&"
+#Ключи можно задавать в любых сочетаниях и в любом порядке после знака "?" с разделением знаком "&"
