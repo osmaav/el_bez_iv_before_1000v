@@ -1,4 +1,4 @@
-# Для самоподготовки сделал клон страницы с тестами с [сайта](https://prombez24.com/tests/210/)
+## Для самоподготовки сделал клон страницы с тестами с [сайта](https://prombez24.com/tests/210/)
 
 [Открыть вопросы](https://osmaav.github.io/el_bez_iv_before_1000v/) 
 
@@ -11,11 +11,11 @@
 <img width="1528" height="274" alt="image" src="https://github.com/user-attachments/assets/1f34360a-c2c0-49ea-bfbb-a6c4da68eba8" />
 
 ## добавил обработку ключей в URL
-<ins> https://osmaav.github.io/el_bez_iv_before_1000v/?sva&hfa&sntd </ins>
+https://osmaav.github.io/el_bez_iv_before_1000v/?sva&hfa&sntd
 
-### где:
+## где:
 - sva - Show Valid Answer - показать правильные ответы;<br/>
 - sntd - Show НТД - показать ссылку на норму;<br/>
 - hfa - Hide Fail Answer - скрыть неверные ответы.<br/>
 
-### Ключи можно задавать в любых сочетаниях и в любом порядке после знака "?" с разделением знаком "&"
+## Ключи можно задавать в любых сочетаниях и в любом порядке после знака "?" с разделением знаком "&"
