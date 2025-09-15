@@ -616,7 +616,7 @@ label {
 .checkbox input:checked~.check {
     width: 20px;
     height: 20px;
-    background: url(../img/checkbox-checked.png);
+    background: url(../img/checkbox-checked-green.png);
 }
 
 .checkbox input:checked~.label,
