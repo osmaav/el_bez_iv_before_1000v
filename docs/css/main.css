@@ -1,29 +1,29 @@
 * {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-family: Roboto;
-    color: rgba(52, 52, 52, 0.87);
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: Roboto;
+  color: rgba(52, 52, 52, 0.87);
 }
 
-    .header__main {
-      font-weight: bold;
-      top: 0px;
-      width: 100%;
-      padding: 5px;
-      text-align: center;
-    }
+.header__main {
+  font-weight: bold;
+  top: 0px;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
 
-    .wrapper {
-      margin-top: 0;
-    }
+.wrapper {
+  margin-top: 0;
+}
 
-    .content,
-    .content-main {
-        padding: 5px;
-    }
+.content,
+.content-main {
+  padding: 5px;
+}
 
 h1,
 h2,
@@ -198,9 +198,7 @@ label {
 }
 
 .checkbox input:checked~.check {
-    width: 20px;
-    height: 20px;
-    background: url(../img/checkbox-checked-green.png);
+    background: url(../img/checkbox-checked.png);
 }
 
 .checkbox input:checked~.label,
@@ -208,30 +206,20 @@ label {
     color: #1B65C0;
 }
 
-.checkbox-green input:checked~.check,
-.checkbox-green-checked input:checked~.check {
+.green input:checked~.check{
     background: url(../img/checkbox-checked-green.png);
 }
 
-.checkbox-green input:checked~.label {
+.green input:checked~.label {
     color: #219653;
 }
 
-.checkbox-green-checked input:checked~.label,
-.checkbox-green-checked .label {
-    color: #219653;
-}
-
-.checkbox-red input:checked~.check {
+.red input:checked~.check {
     background: url(../img/checkbox-checked-red.png);
 }
 
-.checkbox-red input:checked~.label {
+.red input:checked~.label {
     color: #EB5757;
-}
-
-.redesign .checkbox-red input:checked~.label {
-    color: #FEBE98;
 }
 
 .radio .check {
@@ -246,13 +234,6 @@ label {
     width: 20px;
     height: 20px;
     background: url(../img/radiobutton-checked.png);
-}
-
-.remove {
-    width: 16px;
-    height: 18px;
-    background: url(../img/remove.png);
-    cursor: pointer;
 }
 
 table tr td {
