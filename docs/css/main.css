@@ -772,3 +772,26 @@ header {
     max-width: 700px; /* Ограничиваем максимальную ширину, чтобы контент смотрелся гармонично */
     margin: auto; /* Центровка внутри родителя */
 }
+
+/* Шапка сайта */
+.head {
+    display: flex;
+    justify-content: center; /* Горизонтальное выравнивание */
+    background-color: #fafafa;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.head label {
+    display: inline-block; 
+    margin-left:5px;
+}
+
+.head input {
+    height: 0.7rem;
+    margin-left: 5ch; 
+    width: fit-content;
+}
+
+
