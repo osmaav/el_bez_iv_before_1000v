@@ -16,14 +16,11 @@ https://osmaav.github.io/el_bez_iv_before_1000v/?sva&hfa&sntd
 > [!TIP]
 > где:
 > - sva - (Show Valid Answer) - показать правильные ответы;<br/>
->[пример](https://osmaav.github.io/el_bez_iv_before_1000v/?sva)<br/>
-
+>[пример sva](https://osmaav.github.io/el_bez_iv_before_1000v/?sva)<br/>
 > - sntd - (Show НТД) - показать ссылку на норму;<br/>
->[пример](https://osmaav.github.io/el_bez_iv_before_1000v/?sntd)<br/>
-
-
+>[пример sntd](https://osmaav.github.io/el_bez_iv_before_1000v/?sntd)<br/>
 > - hfa - (Hide Fail Answer) - скрыть неверные ответы.<br/>
->[пример](https://osmaav.github.io/el_bez_iv_before_1000v/?hfa)<br/>
+>[пример hfa](https://osmaav.github.io/el_bez_iv_before_1000v/?hfa)<br/>
 
 > [!NOTE]
 > Ключи можно задавать в любых сочетаниях и в любом порядке после знака "?" с разделением знаком "&"
