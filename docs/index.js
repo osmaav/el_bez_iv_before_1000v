@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Иначе делаем красными неправильные ответы
             checkboxDiv.className = 'checkbox checkbox-red';
           }
-        }
+        };
       });
     });
-  }
+  };
 });
 
