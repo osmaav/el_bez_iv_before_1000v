@@ -761,7 +761,7 @@ header {
 .header-menu__item {
     color: #fff;
 }
-
+.header.header__main,
 .wrapper {
     display: flex;
     justify-content: center; /* Горизонтальное выравнивание */
