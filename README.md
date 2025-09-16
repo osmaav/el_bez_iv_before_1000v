@@ -5,13 +5,17 @@
 ### правильные ответы при выборе окрашиваются в зеленый цвет
 ### если выбрать не верный ответ, то он окрашивается в красный цвет  
 
-<img width="703" height="527" alt="image" src="https://github.com/user-attachments/assets/96db2367-6057-43b8-ae54-b9b8c5c07921" />
+<img width="698" height="553" alt="image" src="https://github.com/user-attachments/assets/20cd03f2-1e0e-4f06-a4e7-9c2e43677485" />
+
 
 > [!NOTE]
 > ## в шапке с помощью чек-боксов можно выбирать удобный вариант отображения
 > ### выделить верный ответ<br/>
-> <img width="703" height="597" alt="image" src="https://github.com/user-attachments/assets/147c273a-a505-4896-b383-13ced4b733d7" /><br/>
+> <img width="698" height="487" alt="image" src="https://github.com/user-attachments/assets/10227473-a0eb-4bea-b2f3-e3ef520d48de" />
+<br/>
 > ### скрыть не верные варианты<br/>
-> <img width="703" height="308" alt="image" src="https://github.com/user-attachments/assets/800392e2-9d1a-471f-ab5e-3025417b36c4" /><br/>
+> <img width="698" height="286" alt="image" src="https://github.com/user-attachments/assets/2e0ea5e0-895e-4180-86e2-63700144539c" />
+<br/>
 > ### показать ссылки на нормы<br/>
-> <img width="703" height="597" alt="image" src="https://github.com/user-attachments/assets/ff025c86-b80d-4e5a-ac90-eb3796eb5570" /><br/>
+> <img width="698" height="352" alt="image" src="https://github.com/user-attachments/assets/4baa9d1d-36f9-44c4-9827-724e35c8b738" />
+
