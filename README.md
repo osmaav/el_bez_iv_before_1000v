@@ -12,15 +12,15 @@
 > ## в шапке с помощью чек-боксов можно выбирать удобный вариант отображения
 > ### Показать ответы<br/>
 > <img width="1006" height="565" alt="image" src="https://github.com/user-attachments/assets/54d78b9a-d35f-4afc-80f0-dd98f827642f" />
-> [!NOTE]
+> <br/>
 > ### Скрыть не верные варианты<br/>
 > <img width="1602" height="544" alt="image" src="https://github.com/user-attachments/assets/512ef0d4-982c-4573-8435-bc25ccbef4ff" />
-> [!NOTE]
+> <br/>
 > ### Показать ссылки на нормы<br/>
 > <img width="1002" height="850" alt="image" src="https://github.com/user-attachments/assets/05c577a9-c97d-4f1c-93d4-5c005d7e4ae" />
-> [!NOTE]
+> <br/>
 > ### Скрыть выученные<br/>
-> <img width="787" height="719" alt="image" src="https://github.com/user-attachments/assets/b5d49501-684a-4fe5-89b5-db18f8028d44" />
+> <img width="787" height="719" alt="image" src="https://github.com/user-attachments/assets/b5d49501-684a-4fe5-89b5-db18f8028d44" /><br/>
 
 > [!NOTE]
 > ## Добавил информацию о выученных и оставшихся вопросах <br/>
