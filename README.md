@@ -17,11 +17,10 @@
 > <img width="1602" height="544" alt="image" src="https://github.com/user-attachments/assets/512ef0d4-982c-4573-8435-bc25ccbef4ff" /><br/>
 >
 >### Показать ссылки на нормы<br/>
-> <img width="1002" height="850" alt="image" src="https://github.com/user-attachments/assets/05c577a9-c97d-4f1c-93d4-5c005d7e4ae" /><br/>
+> <img width="967" height="794" alt="image" src="https://github.com/user-attachments/assets/8c0e5028-a9b6-4147-b63c-e1523a139130" /><br/>
 >
 >### Скрыть выученные<br/>
 > <img width="787" height="719" alt="image" src="https://github.com/user-attachments/assets/b5d49501-684a-4fe5-89b5-db18f8028d44" /><br/>
-
-> [!NOTE]
-> ## Добавил информацию о выученных и оставшихся вопросах<br/>
+>
+> ### Добавил информацию о выученных и оставшихся вопросах<br/>
 > <img width="719" height="544" alt="image" src="https://github.com/user-attachments/assets/2d3c49ca-9d34-4ae1-8dc9-e50b04d97902" />
