@@ -50,18 +50,28 @@ document.addEventListener('DOMContentLoaded', function () {
     input.addEventListener('change', event => {
       // Проверяем, приняли ли пользователь условия раньше (через cookie)
       if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
-      updateParametersFromCheckboxes(event.target); // Обновляем параметры
+      console.log('параметры изменились');
+      updateParametersFromCheckboxes(); // Обновляем параметры
     });
   });
+
+  document.querySelectorAll('div.question__answers-list input[type="checkbox"]:not([name="ql"])').forEach(input => {
+    input.addEventListener('change', event => {
+      // Проверяем, приняли ли пользователь условия раньше (через cookie)
+      if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
+      // console.log('ответ изменился');
+    });
+  });
+
 
   // загрузка предыдущего состояния из cookie
   function loadState() {
     const state = getCookie('state') || {};
+    // console.log('get state', state);
     Object.keys(state).forEach(key => {
-      const input = document.querySelector(`input[name="${key}"]`);
-      if (input) {
-        input.checked = state[key];
-      }
+      document.querySelectorAll(`input[type="checkbox"]:not([name="ql"])`).forEach(input => {
+        if (input.name === key) input.checked = state[key]
+      });
     });
 
     // Восстанавливаем состояние выученных вопросов
@@ -73,10 +83,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // сохранение текущего состояния в cookie
   function saveState() {
-    const inputs = document.querySelectorAll('div.head input[type="checkbox"]');
+    const inputs = document.querySelectorAll('input[type="checkbox"]:not([name="ql"])');
     const state = {};
     inputs.forEach(input => {
-      state[input.name] = input.checked;
+      if (input.checked && input.name.length > 2) {
+        state[input.name] = input.checked;
+      }
     });
     setCookie('state', state, 30); // Сохраняем на 30 дней
 
@@ -93,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const hfaCheckbox = document.querySelector('input[name="hfa"]');
     const vntdCheckbox = document.querySelector('input[name="vntd"]');
     const hlqCheckbox = document.querySelector('input[name="hlq"]');
+
     const allQuestions = document.querySelectorAll('div.question__number').length;
     const questionsLearning = document.querySelectorAll('div.checkbox.learn-status > label > input[type="checkbox"]:checked').length;
 
@@ -123,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectValidAnswer = svaCheckbox.checked;
     const hideFailAnswers = hfaCheckbox.checked;
     const showNTD = vntdCheckbox.checked;
+
     const ntdLinks = document.querySelectorAll('div.row.ntdLink');
     if (showNTD) {
       ntdLinks.forEach(el => el.removeAttribute('style'));
@@ -137,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
     answerItems.forEach(function (item) {
       // Считываем поле корректности ответа
       const correctField = item.querySelector('input[name$=".correct"]');
-      // Контейнер с чекбоксом
+      // получае Контейнер с чекбоксом ответа
       const checkboxDiv = item.querySelector('div.checkbox');
 
       // Проверяем, помечен ли этот ответ как верный
@@ -148,13 +162,16 @@ document.addEventListener('DOMContentLoaded', function () {
         // Если включена SVA, ставим чекбокс на правильном ответе
         const checkbox = item.querySelector('input[type="checkbox"]');
         if (selectValidAnswer) {
-          if (checkbox) {
-            checkbox.checked = true;
-          }
+          // if (checkbox) {
+          checkbox.checked = true;
+          // }
         } else {
-          if (checkbox) {
-            checkbox.checked = false;
-          }
+          // if (checkbox) {
+          const state = getCookie('state') || {};
+          // console.log(item, checkbox.name, state.hasOwnProperty(checkbox.name));
+          checkbox.checked = state.hasOwnProperty(checkbox.name) ? state[checkbox.name] : false;
+          // checkbox.checked = false;
+          // }
         }
       } else {
         if (correctField && correctField.value === 'false') {
