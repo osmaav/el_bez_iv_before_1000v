@@ -2,20 +2,27 @@
 
 ## [Открыть страницу с вопросами](https://osmaav.github.io/el_bez_iv_before_1000v/) 
 
+### добавил соглашение о принятии работы с файлами cookies для хранения параметров
+<img width="701" height="139" alt="image" src="https://github.com/user-attachments/assets/a31f07c9-47d0-485f-aba0-69d85b24c5c8" />
+
 ### правильные ответы при выборе окрашиваются в зеленый цвет
 ### если выбрать не верный ответ, то он окрашивается в красный цвет  
-
-<img width="698" height="553" alt="image" src="https://github.com/user-attachments/assets/20cd03f2-1e0e-4f06-a4e7-9c2e43677485" />
-
+<img width="1006" height="563" alt="image" src="https://github.com/user-attachments/assets/d1c78aea-5f19-4ed2-acba-cecad9844cb8" />
 
 > [!NOTE]
 > ## в шапке с помощью чек-боксов можно выбирать удобный вариант отображения
-> ### выделить верный ответ<br/>
-> <img width="698" height="487" alt="image" src="https://github.com/user-attachments/assets/10227473-a0eb-4bea-b2f3-e3ef520d48de" />
-<br/>
+> ### Показать ответы<br/>
+> <img width="1006" height="565" alt="image" src="https://github.com/user-attachments/assets/54d78b9a-d35f-4afc-80f0-dd98f827642f" />
+> <br/>
 > ### скрыть не верные варианты<br/>
-> <img width="698" height="286" alt="image" src="https://github.com/user-attachments/assets/2e0ea5e0-895e-4180-86e2-63700144539c" />
-<br/>
+> 
+> <br/>
 > ### показать ссылки на нормы<br/>
-> <img width="698" height="352" alt="image" src="https://github.com/user-attachments/assets/4baa9d1d-36f9-44c4-9827-724e35c8b738" />
+> 
+> <br/>
+> ### скрыть выученные<br/>
 
+> [!NOTE]
+> ## добавил информацию о выученных и оставшихся<br/>
+> 
+> <br/>
