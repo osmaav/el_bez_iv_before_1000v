@@ -1,4 +1,21 @@
 // index.js
+
+window.onload = function () {
+  var consentModal = document.getElementById("cookie-consent-modal");
+
+  // Проверяем, принял ли пользователь условия раньше
+  if (!localStorage.getItem('cookiesAccepted')) {
+    consentModal.classList.remove('hidden'); // Открываем модальное окно
+  }
+};
+
+// Пользователь принимает политику использования cookie
+function acceptCookies() {
+  localStorage.setItem('cookiesAccepted', true); // Подтверждаем принятие
+  document.getElementById("cookie-consent-modal").classList.add('hidden'); // Скрываем модальное окно
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
   // добавление чекбоксов "Выучен"

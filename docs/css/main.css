@@ -739,7 +739,6 @@ header {
 .wrapper {
     display: flex;
     justify-content: center; /* Горизонтальное выравнивание */
-    align-items: center; /* Дополнительно вертикальное выравнивание, если нужно */
 }
 
 .content {
@@ -769,3 +768,48 @@ header {
 }
 
 
+.hidden {
+  display: none;
+}
+
+
+#cookie-consent-modal {
+  position: fixed;               /* Фиксируем позицию */
+  top: 30px;                     /* Верхняя позиция окна */
+  left: 0;                       /* Левая сторона окна */
+  right: 0;                      /* Правая сторона окна */
+  background-color: rgba(0, 0, 0, 0.8); /* Темный полупрозрачный фон */
+  color: white;                   /* Цвет текста белый */
+  z-index: 1000;                 /* Элемент над всеми остальными */
+  padding: 1rem;                 /* Внутренние отступы */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Тень для красоты */
+  display: flex;                  /* Гибкая сетка */
+  justify-content: center;        /* Центрирование по горизонтали */
+  align-items: center;            /* Центрирование по вертикали */
+}
+
+.modal-content {
+  background-color: transparent; /* Прозрачность фона */
+  text-align: center;            /* Центровка текста */
+}
+
+.modal-content p{
+  color: white;    
+}
+
+.modal-content button {
+  cursor: pointer;               /* Курсор руки при наведении */
+  background-color: #ffc107;     /* Желтый цвет кнопки */
+  color: black;                  /* Черный текст на кнопке */
+  border: none;                  /* Без границ */
+  padding: 0.3rem 0.3rem;         /* Отступы вокруг текста */
+  border-radius: 5px;            /* Округлые углы */
+  font-size: .8rem;               /* Размер шрифта */
+  outline: none;                 /* Без контуров при фокусировке */
+  transition: transform 0.2s;    /* Анимация при клике */
+  display: initial;
+}
+
+.modal-content button:hover {
+  transform: scale(1.05);        /* Немного увеличиваем размер при наведении */
+}
