@@ -767,12 +767,6 @@ header {
     width: fit-content;
 }
 
-
-.hidden {
-  display: none;
-}
-
-
 #cookie-consent-modal {
   position: fixed;               /* Фиксируем позицию */
   top: 30px;                     /* Верхняя позиция окна */
@@ -812,4 +806,8 @@ header {
 
 .modal-content button:hover {
   transform: scale(1.05);        /* Немного увеличиваем размер при наведении */
+}
+
+.hidden {
+  display: none !important;
 }

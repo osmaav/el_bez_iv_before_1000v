@@ -3,18 +3,36 @@
 window.onload = function () {
   var consentModal = document.getElementById("cookie-consent-modal");
 
-  // Проверяем, принял ли пользователь условия раньше
-  if (!localStorage.getItem('cookiesAccepted')) {
+  // Проверяем, приняли ли пользователь условия раньше (через cookie)
+  if (!getCookie('cookiesAccepted')) {
     consentModal.classList.remove('hidden'); // Открываем модальное окно
   }
 };
 
-// Пользователь принимает политику использования cookie
+// Функция принятия соглашения
 function acceptCookies() {
-  localStorage.setItem('cookiesAccepted', true); // Подтверждаем принятие
+  setCookie('cookiesAccepted', true, 365); // Согласие хранится в течение года
   document.getElementById("cookie-consent-modal").classList.add('hidden'); // Скрываем модальное окно
 }
 
+// Читатель cookie
+function getCookie(name) {
+  const matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + encodeURIComponent(name).replace(/[\-\.\+\*]/g, "\\$&") + "=([^;]*)"
+  ));
+  return matches ? JSON.parse(decodeURIComponent(matches[1])) : undefined;
+}
+
+// Установщик cookie
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))}${expires}; path=/`;
+}
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -30,14 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Назначаем слушатель события на изменение состояния чекбоксов в шапке
   document.querySelectorAll('div.head input[type="checkbox"]').forEach(input => {
     input.addEventListener('change', event => {
-      saveState(); // Сохраняем состояние при любом изменении чекбокса
+      // Проверяем, приняли ли пользователь условия раньше (через cookie)
+      if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
       updateParametersFromCheckboxes(event.target); // Обновляем параметры
     });
   });
 
-  // загрузка предыдущего состояния из LocalStorage
+  // загрузка предыдущего состояния из cookie
   function loadState() {
-    const state = JSON.parse(localStorage.getItem('state')) || {};
+    const state = getCookie('state') || {};
     Object.keys(state).forEach(key => {
       const input = document.querySelector(`input[name="${key}"]`);
       if (input) {
@@ -46,26 +65,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Восстанавливаем состояние выученных вопросов
-    const learnedQuestions = JSON.parse(localStorage.getItem('learnedQuestions')) || [];
+    const learnedQuestions = getCookie('learnedQuestions') || [];
     document.querySelectorAll('input[name="ql"]').forEach((checkbox, i) => {
       checkbox.checked = learnedQuestions.includes(i);
     });
   }
 
-  // сохранение текущего состояния в LocalStorage
+  // сохранение текущего состояния в cookie
   function saveState() {
     const inputs = document.querySelectorAll('div.head input[type="checkbox"]');
     const state = {};
     inputs.forEach(input => {
       state[input.name] = input.checked;
     });
-    localStorage.setItem('state', JSON.stringify(state));
+    setCookie('state', state, 30); // Сохраняем на 30 дней
 
     // Сохраняем состояние выученных вопросов
     const learnedQuestions = Array.from(document.querySelectorAll('input[name="ql"]'))
       .map((el, idx) => el.checked ? idx : null)
       .filter(idx => idx !== null);
-    localStorage.setItem('learnedQuestions', JSON.stringify(learnedQuestions));
+    setCookie('learnedQuestions', learnedQuestions, 30); // Сохраняем на 30 дней
   }
 
   // чтения текущих параметров
@@ -155,8 +174,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
-
-
   // добавление чекбоксов "Выучен" каждому вопросу
   function addLearnCheckboxes() {
     const questionNumbers = document.querySelectorAll('div.question__number');
@@ -172,7 +189,11 @@ document.addEventListener('DOMContentLoaded', function () {
       check.className = 'check';
       checkboxContainer.appendChild(label);
       label.appendChild(input);
-      input.addEventListener('change', () => { updateParametersFromCheckboxes(); saveState(); });
+      input.addEventListener('change', () => {
+        updateParametersFromCheckboxes();
+        // Проверяем, приняли ли пользователь условия раньше (через cookie)
+        if (getCookie('cookiesAccepted')) saveState();
+      });
       label.appendChild(check);
       questionNumber.parentNode.insertBefore(checkboxContainer, questionNumber.nextSibling);
     });
