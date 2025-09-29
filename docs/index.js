@@ -101,22 +101,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // чтения текущих параметров
   function updateParametersFromCheckboxes() {
-    const svaCheckbox = document.querySelector('input[name="sva"]');
-    const hfaCheckbox = document.querySelector('input[name="hfa"]');
-    const vntdCheckbox = document.querySelector('input[name="vntd"]');
-    const hlqCheckbox = document.querySelector('input[name="hlq"]');
-
     const allQuestions = document.querySelectorAll('div.question__number').length;
     const questionsLearning = document.querySelectorAll('div.checkbox.learn-status > label > input[type="checkbox"]:checked').length;
-
     // Обновляем заголовок с числом оставшихся вопросов
     updateHeader(allQuestions, questionsLearning);
 
     // Получаем список всех вопросов
     const questionElements = document.querySelectorAll('.question.row');
-    // сохранение текущего состояния в cookie
-    saveState;
-
+    
+    const hlqCheckbox = document.querySelector('input[name="hlq"]');
     // Применяем фильтр для выученных вопросов, если выбран режим их скрытия
     if (hlqCheckbox.checked) {
       questionElements.forEach((questionEl) => {
@@ -135,10 +128,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Устанавливаем параметры на основании состояния чекбоксов
-    const selectValidAnswer = svaCheckbox.checked;
-    const hideFailAnswers = hfaCheckbox.checked;
+    const vntdCheckbox = document.querySelector('input[name="vntd"]');
     const showNTD = vntdCheckbox.checked;
-
     const ntdLinks = document.querySelectorAll('div.row.ntdLink');
     if (showNTD) {
       ntdLinks.forEach(el => el.removeAttribute('style'));
@@ -146,6 +137,12 @@ document.addEventListener('DOMContentLoaded', function () {
       ntdLinks.forEach(el => el.setAttribute('style', 'display: none;'));
     }
 
+    // Устанавливаем параметры на основании состояния чекбоксов
+    const hfaCheckbox = document.querySelector('input[name="hfa"]');
+    const hideFailAnswers = hfaCheckbox.checked;
+    const svaCheckbox = document.querySelector('input[name="sva"]');
+    const selectValidAnswer = svaCheckbox.checked;
+    
     // Поиск списка ответов
     const answerItems = document.querySelectorAll('.question__answers-list-item');
 
@@ -164,16 +161,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // Если включена SVA, ставим чекбокс на правильном ответе
         const checkbox = item.querySelector('input[type="checkbox"]');
         if (selectValidAnswer) {
-          // if (checkbox) {
           checkbox.checked = true;
-          // }
         } else {
-          // if (checkbox) {
           const state = getCookie('state') || {};
-          // console.log(item, checkbox.name, state.hasOwnProperty(checkbox.name));
           checkbox.checked = state.hasOwnProperty(checkbox.name) ? state[checkbox.name] : false;
-          // checkbox.checked = false;
-          // }
         }
       } else {
         if (correctField && correctField.value === 'false') {
@@ -190,7 +181,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     });
-
+    
+    if (hideFailAnswers || showNTD) {if (getCookie('cookiesAccepted')) loadState;}
   }
 
   // добавление чекбоксов "Выучен" каждому вопросу
