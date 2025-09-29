@@ -114,6 +114,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Получаем список всех вопросов
     const questionElements = document.querySelectorAll('.question.row');
+    // сохранение текущего состояния в cookie
+    saveState;
 
     // Применяем фильтр для выученных вопросов, если выбран режим их скрытия
     if (hlqCheckbox.checked) {
