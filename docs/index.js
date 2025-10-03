@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function loadState() {
     const state = getCookie('state') || {};
     Object.keys(state).forEach(key => {
-      const input = document.querySelectorAll(`input[name="${key}"])`);
-      if (input) input.checked = state[key];
+      document.querySelectorAll(`input[type="checkbox"]:not([name="ql"])`).forEach(input => {
+        if (input.name === key) input.checked = state[key]
+      });
     });
-
 
     // Восстанавливаем состояние выученных вопросов
     const learnedQuestions = getCookie('learnedQuestions') || [];
