@@ -34,40 +34,13 @@ function setCookie(name, value, days) {
   document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))}${expires}; path=/`;
 }
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
-
-  // добавление чекбоксов "Выучен"
-  addLearnCheckboxes();
-
-  // Загружаем состояние при старте
-  loadState();
-
-  // Проверяем состояние чекбоксов при загрузке страницы
-  updateParametersFromCheckboxes();
-
-  // Назначаем слушатель события на изменение состояния чекбоксов в шапке
-  document.querySelectorAll('div.head input[type="checkbox"]').forEach(input => {
-    input.addEventListener('change', event => {
-      // Проверяем, приняли ли пользователь условия раньше (через cookie)
-      if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
-      console.log('параметры изменились');
-      updateParametersFromCheckboxes(); // Обновляем параметры
-    });
-  });
-
-  document.querySelectorAll('div.question__answers-list input[type="checkbox"]:not([name="ql"])').forEach(input => {
-    input.addEventListener('change', event => {
-      // Проверяем, приняли ли пользователь условия раньше (через cookie)
-      if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
-      // console.log('ответ изменился');
-    });
-  });
-
 
   // загрузка предыдущего состояния из cookie
   function loadState() {
     const state = getCookie('state') || {};
-    // console.log('get state', state);
     Object.keys(state).forEach(key => {
       document.querySelectorAll(`input[type="checkbox"]:not([name="ql"])`).forEach(input => {
         if (input.name === key) input.checked = state[key]
@@ -79,6 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('input[name="ql"]').forEach((checkbox, i) => {
       checkbox.checked = learnedQuestions.includes(i);
     });
+    // console.log('статус загружен', state);
+
   }
 
   // сохранение текущего состояния в cookie
@@ -97,6 +72,63 @@ document.addEventListener('DOMContentLoaded', function () {
       .map((el, idx) => el.checked ? idx : null)
       .filter(idx => idx !== null);
     setCookie('learnedQuestions', learnedQuestions, 30); // Сохраняем на 30 дней
+  }
+
+  // Наблюдатель за изменениями
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      // console.log('mutation ', mutation, mutation.type, mutation.attributeName)
+      if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+        const target = mutation.target;
+        const currentDisplay = window.getComputedStyle(target).display;
+        // console.log(target, 'questionNumber шзменен!', currentDisplay)
+        if (currentDisplay === 'none') {
+          // console.log(target, 'Element was hidden!');
+          loadState();
+          // Действия при сокрытии элемента
+        } else {
+          // console.log(target, 'Element became visible again.');
+          loadState();
+          // Действия при возвращении видимости
+        }
+      }
+    });
+  });
+
+  // добавление чекбоксов "Выучен" каждому вопросу
+  function addLearnCheckboxes() {
+    const questionNumbers = document.querySelectorAll('div.question__number');
+    questionNumbers.forEach(questionNumber => {
+      const checkboxContainer = document.createElement('div');
+      checkboxContainer.className = 'checkbox learn-status';
+      const label = document.createElement('label');
+      label.textContent = 'Выучен';
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.name = 'ql';
+      const check = document.createElement('div');
+      check.className = 'check';
+      checkboxContainer.appendChild(label);
+      label.appendChild(input);
+      input.addEventListener('change', () => {
+        updateParametersFromCheckboxes();
+        // Проверяем, приняли ли пользователь условия раньше (через cookie)
+        if (getCookie('cookiesAccepted')) saveState();
+
+      });
+      label.appendChild(check);
+      questionNumber.parentNode.insertBefore(checkboxContainer, questionNumber.nextSibling);
+      // Начало наблюдения за элементом
+      observer.observe(questionNumber.parentNode, { attributes: true });
+      // console.log(questionNumber, 'questionNumber обновлнен!')
+    });
+  }
+
+  // Обновление заголовка с количеством вопросов
+  function updateHeader(totalQuestions, learnedQuestions) {
+    const remaining = totalQuestions - learnedQuestions;
+    const headerElement = document.querySelector('div.head.sticky-top label#questions-count-header');
+    headerElement.innerHTML = `<label id="questions-count-header">Осталось изучить ${remaining} из  ${totalQuestions} </label`;
   }
 
   // чтения текущих параметров
@@ -193,35 +225,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
-  // добавление чекбоксов "Выучен" каждому вопросу
-  function addLearnCheckboxes() {
-    const questionNumbers = document.querySelectorAll('div.question__number');
-    questionNumbers.forEach(questionNumber => {
-      const checkboxContainer = document.createElement('div');
-      checkboxContainer.className = 'checkbox learn-status';
-      const label = document.createElement('label');
-      label.textContent = 'Выучен';
-      const input = document.createElement('input');
-      input.type = 'checkbox';
-      input.name = 'ql';
-      const check = document.createElement('div');
-      check.className = 'check';
-      checkboxContainer.appendChild(label);
-      label.appendChild(input);
-      input.addEventListener('change', () => {
-        updateParametersFromCheckboxes();
-        // Проверяем, приняли ли пользователь условия раньше (через cookie)
-        if (getCookie('cookiesAccepted')) saveState();
-      });
-      label.appendChild(check);
-      questionNumber.parentNode.insertBefore(checkboxContainer, questionNumber.nextSibling);
-    });
-  }
+  // добавление чекбоксов "Выучен"
+  addLearnCheckboxes();
 
-  // Обновление заголовка с количеством вопросов
-  function updateHeader(totalQuestions, learnedQuestions) {
-    const remaining = totalQuestions - learnedQuestions;
-    const headerElement = document.querySelector('div.head.sticky-top label#questions-count-header');
-    headerElement.innerHTML = `<label id="questions-count-header">Осталось изучить ${remaining} из  ${totalQuestions} </label`;
-  }
+  // Загружаем состояние при старте
+  loadState();
+
+  // Проверяем состояние чекбоксов при загрузке страницы
+  updateParametersFromCheckboxes();
+
+  // Назначаем слушатель события на изменение состояния чекбоксов в шапке
+  document.querySelectorAll('div.head input[type="checkbox"]').forEach(input => {
+    input.addEventListener('change', event => {
+      // Проверяем, приняли ли пользователь условия раньше (через cookie)
+      if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
+      // console.log('параметры изменились');
+      updateParametersFromCheckboxes(); // Обновляем параметры
+    });
+  });
+
+  document.querySelectorAll('div.question__answers-list input[type="checkbox"]:not([name="ql"])').forEach(input => {
+    input.addEventListener('change', event => {
+      // Проверяем, приняли ли пользователь условия раньше (через cookie)
+      if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
+      // console.log('ответ изменился');
+    });
+  });
+
+
+
+
+
+
+
+  // observer.observe(document.getElementById('myDiv'), { attributes: true });
+
+
+
+
+
 });
