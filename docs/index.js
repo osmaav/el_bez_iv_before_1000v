@@ -74,25 +74,25 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Наблюдатель за изменениями
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      // console.log('mutation ', mutation, mutation.type, mutation.attributeName)
-      if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-        const target = mutation.target;
-        const currentDisplay = window.getComputedStyle(target).display;
-        // console.log(target, 'questionNumber шзменен!', currentDisplay)
-        if (currentDisplay === 'none') {
-          // console.log(target, 'Element was hidden!');
-          loadState();
-          // Действия при сокрытии элемента
-        } else {
-          // console.log(target, 'Element became visible again.');
-          loadState();
-          // Действия при возвращении видимости
-        }
-      }
-    });
-  });
+  // const observer = new MutationObserver((mutations) => {
+  //   mutations.forEach((mutation) => {
+  //     // console.log('mutation ', mutation, mutation.type, mutation.attributeName)
+  //     if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+  //       const target = mutation.target;
+  //       const currentDisplay = window.getComputedStyle(target).display;
+  //       // console.log(target, 'questionNumber шзменен!', currentDisplay)
+  //       if (currentDisplay === 'none') {
+  //         // console.log(target, 'Element was hidden!');
+  //         loadState();
+  //         // Действия при сокрытии элемента
+  //       } else {
+  //         // console.log(target, 'Element became visible again.');
+  //         loadState();
+  //         // Действия при возвращении видимости
+  //       }
+  //     }
+  //   });
+  // });
 
   // добавление чекбоксов "Выучен" каждому вопросу
   function addLearnCheckboxes() {
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     if (hideFailAnswers || showNTD) { if (getCookie('cookiesAccepted')) loadState; }
-    saveState();
+    // saveState();
   }
 
   // добавление чекбоксов "Выучен"
@@ -241,6 +241,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Начало наблюдения за элементом
-  observer.observe(document.querySelector('.content'), { attributes: true, subtree: true });
+  // observer.observe(document.querySelector('.content'), { attributes: true, subtree: true });
 
 });
