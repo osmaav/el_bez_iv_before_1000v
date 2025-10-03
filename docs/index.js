@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // console.log(target, 'questionNumber шзменен!', currentDisplay)
         if (currentDisplay === 'none') {
           // console.log(target, 'Element was hidden!');
-          saveState();
+          loadState();
           // Действия при сокрытии элемента
         } else {
           // console.log(target, 'Element became visible again.');
