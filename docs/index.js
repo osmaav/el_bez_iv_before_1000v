@@ -42,17 +42,16 @@ document.addEventListener('DOMContentLoaded', function () {
   function loadState() {
     const state = getCookie('state') || {};
     Object.keys(state).forEach(key => {
-      document.querySelectorAll(`input[type="checkbox"]:not([name="ql"])`).forEach(input => {
-        if (input.name === key) input.checked = state[key]
-      });
+      const input = document.querySelectorAll(`input[name="${key}"])`);
+      if (input) input.checked = state[key];
     });
+
 
     // Восстанавливаем состояние выученных вопросов
     const learnedQuestions = getCookie('learnedQuestions') || [];
     document.querySelectorAll('input[name="ql"]').forEach((checkbox, i) => {
       checkbox.checked = learnedQuestions.includes(i);
     });
-    // console.log('статус загружен', state);
 
   }
 
@@ -227,24 +226,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Назначаем слушатель события на изменение состояния чекбоксов в шапке
   document.querySelectorAll('div.head input[type="checkbox"]').forEach(input => {
-    input.addEventListener('change', event => {
+    input.addEventListener('change', () => {
       // Проверяем, приняли ли пользователь условия раньше (через cookie)
       if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
-      // console.log('параметры изменились');
       updateParametersFromCheckboxes(); // Обновляем параметры
     });
   });
 
   document.querySelectorAll('div.question__answers-list input[type="checkbox"]:not([name="ql"])').forEach(input => {
-    input.addEventListener('change', event => {
+    input.addEventListener('change', () => {
       // Проверяем, приняли ли пользователь условия раньше (через cookie)
       if (getCookie('cookiesAccepted')) saveState(); // Сохраняем состояние при любом изменении чекбокса
-      // console.log('ответ изменился');
     });
   });
 
   // Начало наблюдения за элементом
-  document.querySelector('.content'), { attributes: true, subtree: true }
-
+  observer.observe(document.querySelector('.content'), { attributes: true, subtree: true });
 
 });
