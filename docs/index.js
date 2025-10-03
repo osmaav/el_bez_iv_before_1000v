@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // console.log(target, 'questionNumber шзменен!', currentDisplay)
         if (currentDisplay === 'none') {
           // console.log(target, 'Element was hidden!');
-          loadState();
+          saveState();
           // Действия при сокрытии элемента
         } else {
           // console.log(target, 'Element became visible again.');
@@ -118,8 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       label.appendChild(check);
       questionNumber.parentNode.insertBefore(checkboxContainer, questionNumber.nextSibling);
-      // Начало наблюдения за элементом
-      observer.observe(questionNumber.parentNode, { attributes: true });
       // console.log(questionNumber, 'questionNumber обновлнен!')
     });
   }
@@ -140,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Получаем список всех вопросов
     const questionElements = document.querySelectorAll('.question.row');
-    
+
     const hlqCheckbox = document.querySelector('input[name="hlq"]');
     // Применяем фильтр для выученных вопросов, если выбран режим их скрытия
     if (hlqCheckbox.checked) {
@@ -174,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const hideFailAnswers = hfaCheckbox.checked;
     const svaCheckbox = document.querySelector('input[name="sva"]');
     const selectValidAnswer = svaCheckbox.checked;
-    
+
     // Поиск списка ответов
     const answerItems = document.querySelectorAll('.question__answers-list-item');
 
@@ -213,8 +211,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     });
-    
-    if (hideFailAnswers || showNTD) {if (getCookie('cookiesAccepted')) loadState;}
+
+    if (hideFailAnswers || showNTD) { if (getCookie('cookiesAccepted')) loadState; }
+    saveState();
   }
 
   // добавление чекбоксов "Выучен"
@@ -244,16 +243,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-
-
-
-
-
-
-  // observer.observe(document.getElementById('myDiv'), { attributes: true });
-
-
-
+  // Начало наблюдения за элементом
+  document.querySelector('.content'), { attributes: true, subtree: true }
 
 
 });
