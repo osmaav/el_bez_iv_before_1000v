@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  btnCookiesClear.addEventListener('click', () => {
+  document.getElementById('cookies-clear').addEventListener('click', () => {
     // Очистка всех куки
     document.cookie.split(';').forEach((c) => {
       document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=Thu, 01 Jan 1970 00:00:00 GMT');
