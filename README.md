@@ -2,25 +2,26 @@
 [источник вопросов с ответами](https://prombez24.com/tests/210/)
 
 ### добавил соглашение о принятии работы с файлами cookies для хранения параметров
-<img width="701" height="139" alt="image" src="https://github.com/user-attachments/assets/a31f07c9-47d0-485f-aba0-69d85b24c5c8" />
+![01](https://github.com/user-attachments/assets/48cc590b-2816-4d26-a945-07737faa3f84)
 
 ### правильные ответы при выборе окрашиваются в зеленый цвет
 ### если выбрать не верный ответ, то он окрашивается в красный цвет  
-<img width="1006" height="563" alt="image" src="https://github.com/user-attachments/assets/d1c78aea-5f19-4ed2-acba-cecad9844cb8" />
+![02](https://github.com/user-attachments/assets/29ef4667-0982-4f41-8c26-e77c9705cfc8)
 
 > [!NOTE]
 > ## в шапке с помощью чек-боксов можно выбирать удобный вариант отображения
 > ### Показать ответы<br/>
-> <img width="1006" height="565" alt="image" src="https://github.com/user-attachments/assets/54d78b9a-d35f-4afc-80f0-dd98f827642f" /><br/>
+> ![03](https://github.com/user-attachments/assets/a2246ba5-d30d-407c-abc8-3d6580caf151)<br/>
 >
 >### Скрыть не верные варианты<br/>
-> <img width="1602" height="544" alt="image" src="https://github.com/user-attachments/assets/512ef0d4-982c-4573-8435-bc25ccbef4ff" /><br/>
+> ![04](https://github.com/user-attachments/assets/e7c9b21b-c8cb-4aec-9c6b-d27d2a289e94)<br/>
 >
 >### Показать ссылки на нормы<br/>
-> <img width="967" height="794" alt="image" src="https://github.com/user-attachments/assets/8c0e5028-a9b6-4147-b63c-e1523a139130" /><br/>
+> ![07](https://github.com/user-attachments/assets/f8237f22-638a-41d2-aa5d-57035d2cf413)<br/>
 >
 >### Скрыть выученные<br/>
-> <img width="787" height="719" alt="image" src="https://github.com/user-attachments/assets/b5d49501-684a-4fe5-89b5-db18f8028d44" /><br/>
+> ![06](https://github.com/user-attachments/assets/5a77315f-03d7-40ba-a051-b3b2902b9a0d)<br/>
 >
 > ### Добавил информацию о выученных и оставшихся вопросах<br/>
-> <img width="719" height="544" alt="image" src="https://github.com/user-attachments/assets/2d3c49ca-9d34-4ae1-8dc9-e50b04d97902" />
+> ![08](https://github.com/user-attachments/assets/25bbfd6e-824f-4e49-a354-377ae3823903)
+
