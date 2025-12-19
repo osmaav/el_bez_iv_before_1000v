@@ -34,8 +34,6 @@ function setCookie(name, value = {}, days = 30) {
   document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))}${expires}; path=/`;
 }
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
 
   // загрузка предыдущего состояния из cookie
@@ -190,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     if (hideFailAnswers || showNTD) { if (getCookie('cookiesAccepted')) loadState; }
-    // saveState();
   }
 
   // добавление чекбоксов "Выучен"
@@ -219,14 +216,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   document.getElementById('cookies-clear').addEventListener('click', () => {
-    // Очистка всех куки
-    document.cookie.split(';').forEach((c) => {
-      document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=Thu, 01 Jan 1970 00:00:00 GMT');
-    });
-
-    setCookie('cookiesAccepted', true, 365);
-    // Перезагрузка страницы
-    location.reload(true);
-    loadState();
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = null);
+    document.querySelectorAll('.head input[type="checkbox"]').forEach(input => { input.value = false; input.checked = null });
+    saveState();
+    updateParametersFromCheckboxes(); // Обновляем параметры
   });
 });
