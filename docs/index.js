@@ -24,7 +24,7 @@ function getCookie(name) {
 }
 
 // Установщик cookie
-function setCookie(name, value, days) {
+function setCookie(name, value = {}, days = 30) {
   let expires = "";
   if (days) {
     const date = new Date();
@@ -218,11 +218,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  const btnCookiesClear = document.getElementById('cookies-clear');
-  btnCookiesClear.addEventListener('click',() => {
-      // Проверяем, приняли ли пользователь условия раньше (через cookie)
-      if (getCookie('cookiesAccepted')) {
-        setCookie('state', {}, 30); // Сохраняем на 30 дней
-      }
+  btnCookiesClear.addEventListener('click', () => {
+    // Очистка всех куки
+    document.cookie.split(';').forEach((c) => {
+      document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=Thu, 01 Jan 1970 00:00:00 GMT');
     });
+    setCookie('cookiesAccepted', true, 365);
+    // Перезагрузка страницы
+    location.reload(true);
+  });
 });
