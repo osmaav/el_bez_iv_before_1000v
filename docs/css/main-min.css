@@ -25,7 +25,7 @@
 h1,h2,h3,h4,h5 {
   font-style: normal;
   line-height: normal;
-  color: #000;
+  color: #d0bcbc;
   font-size: 16px
 }
 
@@ -68,7 +68,7 @@ label {
   font-style: normal;
   font-weight: 400;
   line-height: 17px;
-  color: #91cfa0;
+  color: #2c9738;
   margin: 5px 0
 }
 
@@ -206,13 +206,13 @@ header {
   font-weight: 700;
   line-height: 23px;
   font-size: .9rem;
-  color: rgb(175 202 255 / 87%);
+  color: rgb(150 159 255 / 87%);
 }
 
 .header.header__main,.wrapper {
   display: flex;
   justify-content: center;
-  background: #3e3d3d;
+  background: #262525;
 }
 
 .content {
