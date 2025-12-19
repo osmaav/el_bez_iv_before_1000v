@@ -223,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.cookie.split(';').forEach((c) => {
       document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=Thu, 01 Jan 1970 00:00:00 GMT');
     });
+
     setCookie('cookiesAccepted', true, 365);
     // Перезагрузка страницы
     location.reload(true);
