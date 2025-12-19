@@ -227,5 +227,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setCookie('cookiesAccepted', true, 365);
     // Перезагрузка страницы
     location.reload(true);
+    loadState();
   });
 });
