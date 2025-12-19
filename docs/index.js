@@ -73,27 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setCookie('learnedQuestions', learnedQuestions, 30); // Сохраняем на 30 дней
   }
 
-  // Наблюдатель за изменениями
-  // const observer = new MutationObserver((mutations) => {
-  //   mutations.forEach((mutation) => {
-  //     // console.log('mutation ', mutation, mutation.type, mutation.attributeName)
-  //     if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-  //       const target = mutation.target;
-  //       const currentDisplay = window.getComputedStyle(target).display;
-  //       // console.log(target, 'questionNumber шзменен!', currentDisplay)
-  //       if (currentDisplay === 'none') {
-  //         // console.log(target, 'Element was hidden!');
-  //         loadState();
-  //         // Действия при сокрытии элемента
-  //       } else {
-  //         // console.log(target, 'Element became visible again.');
-  //         loadState();
-  //         // Действия при возвращении видимости
-  //       }
-  //     }
-  //   });
-  // });
-
   // добавление чекбоксов "Выучен" каждому вопросу
   function addLearnCheckboxes() {
     const questionNumbers = document.querySelectorAll('div.question__number');
@@ -117,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       label.appendChild(check);
       questionNumber.parentNode.insertBefore(checkboxContainer, questionNumber.nextSibling);
-      // console.log(questionNumber, 'questionNumber обновлнен!')
     });
   }
 
@@ -240,7 +218,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Начало наблюдения за элементом
-  // observer.observe(document.querySelector('.content'), { attributes: true, subtree: true });
-
+  const btnCookiesClear = document.getElementById('cookies-clear');
+  btnCookiesClear.addEventListener('click',() => {
+      // Проверяем, приняли ли пользователь условия раньше (через cookie)
+      if (getCookie('cookiesAccepted')) {
+        setCookie('state', {}, 30); // Сохраняем на 30 дней
+      }
+    });
 });
