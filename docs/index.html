@@ -1,63 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Вопросы 1 - 292</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./css/main-min.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="index.js"></script>
-  </head>
-  <body>
-    <div id="app">
-      <div id="cookie-consent-modal" class="modal-cookie hidden">
-        <div class="modal-content">
-          <p>Данный веб-сайт использует файлы cookie для сохранения параметров.</p>
-          <button @click="acceptCookies">Принять</button>
-        </div>
-      </div>
-      
-      <!-- Шапка сайта -->
-      <div class="head sticky-top">
-        <label><input v-model="showAnswers" type="checkbox" name="sva" value="true">Показать ответы</label>
-        <label><input v-model="hideOptions" type="checkbox" name="hfa" value="true">Скрыть варианты</label>
-        <label><input v-model="showNorms" type="checkbox" name="vntd" value="true">Показать нормы</label>
-        <label><input v-model="hideLearned" type="checkbox" name="hlq" value="false">Скрыть выученные</label>
-        <label id="questions-count-header">Осталось изучить {{ remainingQuestionsCount }} из {{ totalQuestionsCount }}</label>
-        <button style="background-color: darkmagenta;margin: 6px 4px;padding: 0px 6px;border-radius: 10px;" id="cookies-clear" title="сбросить состояние выученных вопросов" @click="resetStates">сброс</button>
-      </div>
-      <div class="header header__main">
-        <h3>Эксплуатация электроустановок потребителей<br/>(IV группа по электробезопасности до 1000 В)</h3>
-      </div>
-      <div class="container">
-        <div class="wrapper">
-          <div class="content">
-            <template v-for="(card, index) in filteredCards">
-              <div class="question row">
-                  <div class="question__number">{{ card.number }}</div>
-                  <div class="question__text">{{ card.question }}</div>
-                  <div class="question__answers-list" v-if="!hideOptions">
-                      <div class="question__answers-list-item" v-for="(answer, idx) in card.answers" :style="{ display: showAnswer(idx) ? '' : 'none' }">
-                          <input type="hidden" :name="'questionList['+index+'].answers['+idx+'].correct'" :value="answer.correct">
-                              <div class="checkbox" :class="answer.correct ? 'green' : 'red'">
-                                  <label>
-                                      <input type="hidden" :name="'questionList['+index+'].answers['+idx+'].checked'" value="false">
-                                      <input type="checkbox" :name="'questionList['+index+'].answers['+idx+'].checked'" :disabled="isQuestionCompleted(index)" @change="markAsCompleted(index)">
-                                      <div class="check"></div>
-                                      <span class="label">{{ answer.answer }}</span>
-                                  </label>
-                              </div>
-                      </div>
-                  </div>
-                  <div class="row ntdLink" :style="{ display: showNorms ? '' : 'none' }">
-                      <div style="font-weight: bold; font-size: 0.9em">Ссылка на НТД:</div>
-                      <span style="display:block" class="bg-yellow">{{ card.link }}</span>
-                  </div>
-              </div>
-            </template>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вопросы 1 - 292</title>
+  <link rel="stylesheet" href="styles/main.min.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/scripts/app.js"></script>
+</body>
 </html>
