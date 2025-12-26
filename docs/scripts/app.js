@@ -1,4 +1,4 @@
 import { createApp } from 'vue';
-import Cards from '../components/cards.vue';
+import Cards from '../components/cards.js';
 
 createApp(Cards).mount('#app');
