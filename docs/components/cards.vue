@@ -25,7 +25,7 @@ export default {
   methods: {
     async loadCards() {
       try {
-        const response = await fetch('/data/cards__eb_IV_1000v.json');
+        const response = await fetch('/data/cards.json');
         const json = await response.json();
         this.cards = Object.entries(json).map(([number, card]) => ({
           number,
