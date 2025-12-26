@@ -11,7 +11,7 @@ export default {
   },
   computed: {
     totalQuestionsCount() {
-      return this.cards.length;
+      return this.cards?.length;
     },
     remainingQuestionsCount() {
       return this.totalQuestionsCount - Object.values(this.completedQuestions).filter(status => status).length;
