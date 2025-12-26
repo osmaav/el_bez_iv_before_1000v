@@ -25,8 +25,9 @@ export default {
   methods: {
     async loadCards() {
       try {
-        const response = await fetch('/data/cards.json');
+        const response = await fetch('./data/cards.json');
         const json = await response.json();
+        console.log('DEBUG:', json);
         this.cards = Object.entries(json).map(([number, card]) => ({
           number,
           question: card.question,
@@ -34,7 +35,7 @@ export default {
           link: card.link
         }));
       } catch (error) {
-        console.error('Ошибка при загрузке данных:', error);
+        console.error('DEBUG: Ошибка при загрузке данных!', error);
       }
     },
     markAsCompleted(index) {
@@ -84,7 +85,6 @@ export default {
                           <input type="hidden" :name="'questionList['+index+'].answers['+idx+'].correct'" :value="answer.correct">
                               <div class="checkbox" :class="answer.correct ? 'green' : 'red'">
                                   <label>
-                                      <input type="hidden" :name="'questionList['+index+'].answers['+idx+'].checked'" value="false">
                                       <input type="checkbox" :name="'questionList['+index+'].answers['+idx+'].checked'" :disabled="isQuestionCompleted(index)" @change="markAsCompleted(index)">
                                       <div class="check"></div>
                                       <span class="label">{{ answer.answer }}</span>
